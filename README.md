@@ -1,7 +1,7 @@
 # calculador_imc
 
 ## Description
-This is a simple BMI Calculator App made in Flutter
+This is a simple BMI Calculator Example App made in Flutter
 
 ## Details
 ```diff
