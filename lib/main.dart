@@ -25,7 +25,11 @@ class _HomeState extends State<Home> {
     setState(() {
       _infoText = 'Preencha os dados';
       _formKey = GlobalKey<FormState>();
-      _icon = Icon(FontAwesomeIcons.smile, size: 60, color: Colors.deepPurple,);
+      _icon = Icon(
+        FontAwesomeIcons.smile,
+        size: 60,
+        color: Colors.deepPurple,
+      );
     });
   }
 
@@ -39,22 +43,46 @@ class _HomeState extends State<Home> {
       print(imc);
 
       if (imc < 18.6) {
-        _icon = Icon(FontAwesomeIcons.frown, size: 60, color: Colors.deepPurple,);
+        _icon = Icon(
+          FontAwesomeIcons.frown,
+          size: 60,
+          color: Colors.deepPurple,
+        );
         _infoText = "Abaixo do peso (${imc.toStringAsPrecision(4)})";
       } else if (imc >= 18.6 && imc < 24.9) {
-        _icon = Icon(FontAwesomeIcons.smile, size: 60, color: Colors.deepPurple,);
+        _icon = Icon(
+          FontAwesomeIcons.smile,
+          size: 60,
+          color: Colors.deepPurple,
+        );
         _infoText = "Peso ideal (${imc.toStringAsPrecision(4)})";
       } else if (imc >= 24.9 && imc < 29.9) {
-        _icon = Icon(FontAwesomeIcons.meh, size: 60, color: Colors.deepPurple,);
+        _icon = Icon(
+          FontAwesomeIcons.meh,
+          size: 60,
+          color: Colors.deepPurple,
+        );
         _infoText = "Pouco acima do peso (${imc.toStringAsPrecision(4)})";
       } else if (imc >= 29.9 && imc < 34.9) {
-        _icon = Icon(FontAwesomeIcons.frown, size: 60, color: Colors.deepPurple,);
+        _icon = Icon(
+          FontAwesomeIcons.frown,
+          size: 60,
+          color: Colors.deepPurple,
+        );
         _infoText = "Obesidade Grau I (${imc.toStringAsPrecision(4)})";
       } else if (imc >= 34.9 && imc < 39.9) {
-        _icon = Icon(FontAwesomeIcons.sadTear, size: 60, color: Colors.deepPurple,);
+        _icon = Icon(
+          FontAwesomeIcons.sadTear,
+          size: 60,
+          color: Colors.deepPurple,
+        );
         _infoText = "Obesidade Grau II (${imc.toStringAsPrecision(4)})";
       } else {
-        _icon = Icon(FontAwesomeIcons.sadCry, size: 60, color: Colors.deepPurple,);
+        _icon = Icon(
+          FontAwesomeIcons.sadCry,
+          size: 60,
+          color: Colors.deepPurple,
+        );
         _infoText = "Obesidade Grau III (${imc.toStringAsPrecision(4)})";
       }
     });
@@ -99,7 +127,7 @@ class _HomeState extends State<Home> {
                       TextStyle(color: Colors.deepPurpleAccent, fontSize: 25),
                   controller: pesoController,
                   validator: (value) {
-                    if (value.isEmpty) {
+                    if (value != null && value.isEmpty) {
                       return "Preencha o peso!!";
                     }
                   },
@@ -114,7 +142,7 @@ class _HomeState extends State<Home> {
                         TextStyle(color: Colors.deepPurpleAccent, fontSize: 25),
                     controller: alturaController,
                     validator: (value) {
-                      if (value.isEmpty) {
+                      if (value != null && value.isEmpty) {
                         return "Preencha a altura!!";
                       }
                     }),
@@ -122,11 +150,9 @@ class _HomeState extends State<Home> {
                   padding: EdgeInsets.only(top: 24, bottom: 20),
                   child: Container(
                     height: 55,
-                    child: RaisedButton(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12)),
+                    child: ElevatedButton(
                       onPressed: () {
-                        if (_formKey.currentState.validate()) {
+                        if (_formKey.currentState!.validate()) {
                           calculate();
                         }
                       },
@@ -134,20 +160,18 @@ class _HomeState extends State<Home> {
                         "CALCULAR",
                         style: TextStyle(color: Colors.white, fontSize: 25),
                       ),
-                      color: Colors.deepPurple,
+                      //color: Colors.deepPurple,
                     ),
                   ),
                 ),
                 Text(
                   _infoText,
                   textAlign: TextAlign.center,
-                  style:
-                      TextStyle(color: Colors.deepPurple[300], fontSize: 22),
+                  style: TextStyle(color: Colors.deepPurple[300], fontSize: 22),
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 15, bottom: 15),
                   child: _icon,
-
                 )
               ],
             ),
