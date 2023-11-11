@@ -130,6 +130,7 @@ class _HomeState extends State<Home> {
                     if (value != null && value.isEmpty) {
                       return "Preencha o peso!!";
                     }
+                    return null;
                   },
                 ),
                 TextFormField(
@@ -145,6 +146,7 @@ class _HomeState extends State<Home> {
                       if (value != null && value.isEmpty) {
                         return "Preencha a altura!!";
                       }
+                      return null;
                     }),
                 Padding(
                   padding: EdgeInsets.only(top: 24, bottom: 20),
